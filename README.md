@@ -1,4 +1,4 @@
-# Vue + Firebase Emulator Suite
+# Vue.js + Firebase Emulator Suite
 
 This is a simple Vue 3 project that uses Firebase Emulator Suite for local development.
 
