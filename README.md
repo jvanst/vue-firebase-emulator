@@ -7,19 +7,23 @@ This is a simple Vue 3 project that uses Firebase Emulator Suite for local devel
 ### Pre-requisites
 
 - Node.js (v20 preferred)
-- Docker Desktop
-- Visual Studio Code
+- Visual Studio Code (recommended)
 
 ### Getting started
 
-1. Clone the repository
-2. Install the dependencies
+**1. Clone the repository**
 
-```
-npm install
+**2. Install Firebase Emulator Suite**
+
+Note: You will need Java JDK 11 or heigher to run the Firebase Emulator Suite. https://firebase.google.com/docs/emulator-suite/install_and_configure
+
+In the terminal, run the following command:
+
+```bash
+npm install -g firebase-tools
 ```
 
-3. Start the Firebase Emulator Suite using VSCode task
+**3. Start the Firebase Emulator Suite using the VSCode task**
 
 - Open the command palette (Ctrl + Shift + P)
 - Type `Tasks: Run Task`
@@ -33,9 +37,21 @@ npm install
 └─────────────────────────────────────────────────────────────┘
 ```
 
+Note: If you're using a different editor, you can start the Firebase Emulator Suite by running the following command in the terminal (from the `firebase-emulator` folder of the project):
+
+```bash
+firebase emulators:start --project demo-app --import ./data --export-on-exit
+```
+
+**4. Install the dependencies for the Vue project**
+
+```
+npm install
+```
+
 Now you can access the Firebase Emulator Suite UI at http://localhost:4000
 
-4. Finnally, Start the Vue project
+**5. Finally, Start the Vue project**
 
 ```
 npm run dev
