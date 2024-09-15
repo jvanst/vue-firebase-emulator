@@ -1,0 +1,18 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Start Firebase Emulator",
+      "type": "shell",
+      "command": "docker run --name firebase_emulator -p 4000:4000 -p 4400:4400 -p 8080:8080 -p 9150:9150 -p 9099:9099 -v ${workspaceFolder}/firebase-emulator:/app firebase_emulator",
+      "dependsOn": ["Build Firebase Emulator Image"],
+      "problemMatcher": []
+    },
+    {
+      "label": "Build Firebase Emulator Image",
+      "type": "shell",
+      "command": "docker rm -f firebase_emulator && docker build -t firebase_emulator -f ${workspaceFolder}/firebase-emulator/Dockerfile ${workspaceFolder}/firebase-emulator",
+      "problemMatcher": []
+    }
+  ]
+}
