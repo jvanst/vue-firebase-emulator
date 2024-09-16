@@ -2,7 +2,8 @@
 import { collection, query, onSnapshot } from 'firebase/firestore'
 import { onUnmounted, ref } from 'vue'
 
-import { db } from '@/firebase'
+import { auth, db } from '@/firebase'
+import router from '@/router'
 
 type Note = {
   id: string
@@ -28,6 +29,13 @@ const unsubscribe = onSnapshot(q, (querySnapshot) => {
 })
 
 onUnmounted(() => unsubscribe)
+
+async function handleSignOut() {
+  await auth.signOut()
+
+  // Force a navigation so our router.beforeEach hook is triggered
+  router.go(0)
+}
 </script>
 
 <template>
@@ -46,5 +54,7 @@ onUnmounted(() => unsubscribe)
         <p>{{ note.content }}</p>
       </li>
     </ul>
+
+    <button @click="handleSignOut">Sign out</button>
   </main>
 </template>
